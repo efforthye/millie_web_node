@@ -21,3 +21,17 @@
 - database 연결관계(associate) 설정
   (user, book, comment)
 - git을 이용한 형상관리(merge,rebase,commit,push,pull등)
+
+# 있으면 좋았을 것
+- socket.io를 활용한 대화기능 구현
+
+# 프로젝트 실행 방법
+1. 폴더경로 접근 후 npm install -> node_modules 생성됨
+2. config/config.json에서 database 이름과 비밀번호 확인 및 변경
+  - database 이름은 millie
+  - 비밀번호는 각자의 mysql workbench 비밀번호로 설정한다.
+3. mysql workbench에 해당 이름의 스키마 생성
+  - millie_web_project, utf8mb4, utf8mb4_general
+4. npm start로 서버 실행시킨 뒤 database에 table 생성을 위해 
+  index.js의 force 부분을 true로 한 번 바꿔 저장한 뒤, 다시 false로 바꿔 저장한다.
+5. npm start로 실행해준다.
