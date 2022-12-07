@@ -11,7 +11,7 @@ console.log(temp_split[1]);
 if (cookieJwt) {
   cookieVerify();
 } else {
-  location.href = "http://localhost:8080";
+  location.href = "/";
 }
 
 
@@ -52,7 +52,7 @@ async function loadReviews() {
       <div class="review_coment">
       <img
         class="character_img_two"
-        src="${"http://localhost:8080/uploads/" + userInfo.data.userImg}"
+        src="${"/uploads/" + userInfo.data.userImg}"
         alt=""
       />
       <input
@@ -127,7 +127,7 @@ async function loadReviews() {
     temp_review_content.classList.add("review_content");
     temp_review_content_detail.classList.add("review_content_detail");
     temp_review_content_detail.style.marginLeft = "10px";
-    temp_profile_img.src = `http://localhost:8080/uploads/${userImg.data.userImg}`;
+    temp_profile_img.src = `/uploads/${userImg.data.userImg}`;
     temp_profile_img.style.width = "30px";
     temp_profile_img.style.height = "30px";
     temp_profile_img.style.borderRadius = "30px";
@@ -218,7 +218,7 @@ async function book_info() {
   // author_name.innerText = data.data.title + " 지음"; //
   book_title.append(author_name);
   document.getElementById("book_img").src =
-    "http://localhost:8080/uploads/" + data.data.book_img;
+    "/uploads/" + data.data.book_img;
   document.getElementById("book_img").style.width = "223px";
   let book_detail = document.getElementById("bookdetail-info-content");
   book_detail.innerText = data.data.introduce;
@@ -317,7 +317,7 @@ document.getElementById("logoutBtn").onclick = async () => {
 
   if (data.data.status == 200) {
     alert("로그아웃 성공");
-    location.href = "http://localhost:8080";
+    location.href = "/";
   } else {
     alert("로그아웃 실패");
   }

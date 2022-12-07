@@ -5,7 +5,7 @@ if (cookieJwt) {
   // cookieVerify();
 } else {
   // 쿠키 없으면 로그인 전 메인으로 보냄
-  location.href = "http://localhost:8080";
+  location.href = "/";
 }
 
 
@@ -63,7 +63,7 @@ async function newbooks() {
     temp_item.append(temp_book_info);
     const img = document.createElement("img");
     console.log(data.data[i].book_img);
-    img.src = "http://localhost:8080/uploads/" + data.data[i].book_img;
+    img.src = "/uploads/" + data.data[i].book_img;
     temp_img_box.append(img);
     const temp_book_title = document.createElement("div");
     temp_book_title.classList.add("book_title");
@@ -151,7 +151,7 @@ document.getElementById("log_out").onclick = async () => {
 
   if (data.data.status == 200) {
     alert("로그아웃 성공");
-    location.href = "http://localhost:8080";
+    location.href = "/";
   } else {
     alert("로그아웃 실패");
   }

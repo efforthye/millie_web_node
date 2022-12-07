@@ -6,7 +6,7 @@ if(cookieJwt){
   cookieVerify();
   setProfileImg();
 }else{
-  location.href = "http://localhost:8080";
+  location.href = "/";
 }
 
 // 이미지 정보를 쿠키에서 가져와 띄움
@@ -14,7 +14,7 @@ async function setProfileImg(){
   const data = await axios.post("/v3/mainhome/cookieInfo", {cookieJwt});
 
   const userImgElem = document.getElementById("userImg");
-  userImgElem.setAttribute("src", `http://localhost:8080/uploads/${data.data.userImg}`);
+  userImgElem.setAttribute("src", `/uploads/${data.data.userImg}`);
 
   // src를 data.data.userImg로 가져와서 띄우기만 하면 됨
 }
@@ -126,7 +126,7 @@ async function getBookList(){
     bookInfoDiv.classList.add("book_info");
 
     const imgElem = document.createElement("img");
-    imgElem.setAttribute("src", `http://localhost:8080/uploads/${books[i].book_img}`);
+    imgElem.setAttribute("src", `/uploads/${books[i].book_img}`);
     imgElem.setAttribute("alt", "책 이미지");
 
     const bookTitleDiv = document.createElement("div");

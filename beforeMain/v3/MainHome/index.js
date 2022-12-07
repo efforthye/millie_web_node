@@ -369,7 +369,7 @@ if (cookieJwt) {
   cookieVerify();
 } else {
   // 쿠키 없으면 로그인 전 메인으로 보냄
-  location.href = "http://localhost:8080";
+  location.href = "/";
 }
 
 
@@ -386,7 +386,7 @@ document.getElementById("logOut-btn").onclick = async () => {
 
   if (data.data.status == 200) {
     alert("로그아웃 성공");
-    location.href = "http://localhost:8080";
+    location.href = "/";
   } else {
     alert("로그아웃 실패");
   }
