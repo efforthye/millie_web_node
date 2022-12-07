@@ -11,6 +11,8 @@ const { sequelize } = require("./models/index.js");
 
 // const userbook = sequelize.define('userbook', {}, { timestamps: true });
 
+// 크로스오리진
+const cors = require("cors");
 
 dotenv.config();
 
@@ -46,6 +48,10 @@ app.use(
   })
 );
 app.use("/v3", routes);
+
+// 크로스오리진
+// app.use(cors({origin : "http://localhost:3000"}));
+app.use(cors());
 
 sequelize
   .sync({ force: true })
