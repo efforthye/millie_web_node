@@ -57,5 +57,5 @@ sequelize
   });
 
 app.listen(app.get("port"), () => {
-  console.log("포스팅서버오픈");
+  console.log(app.get("port")+"포트 포스팅서버오픈");
 });
