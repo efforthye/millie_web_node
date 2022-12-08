@@ -49,7 +49,7 @@ makeList("확인용", category[7]);
 newbooks();
 
 async function newbooks() {
-  const data = await axios.post("/v3/category/booklist/bookAdd", {
+  const data = await axios.post("/api/category/booklist/bookAdd", {
     category: category[temp[1]],
   });
   for (let i = 0; i < data.data.length; i++) {
@@ -95,7 +95,7 @@ async function makeList(bannerName, category) {
   temp_h3.id = bannerName + "Title";
   temp_h3.innerText = "추천 도서";
   temp_container.classList.add("item_container");
-  const data = await axios.post("/v3/category/booklist/test", {
+  const data = await axios.post("/api/category/booklist/test", {
     category: category,
   });
   for (let i = 0; i < data.data.length; i++) {
@@ -145,7 +145,7 @@ my_book_btn.onclick = () => {
   location.href = "../../myLibrary";
 };
 document.getElementById("log_out").onclick = async () => {
-  const data = await axios.post("/v3/mainhome/clearCookie", {
+  const data = await axios.post("/api/mainhome/clearCookie", {
     cookieName: tempCookie[0],
   });
 

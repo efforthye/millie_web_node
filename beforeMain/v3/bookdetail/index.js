@@ -19,7 +19,7 @@ if (cookieJwt) {
 const bookReviewElem = document.getElementById("bookReview");
 // 리뷰들을 불러오는 함수
 async function loadReviews() {
-  const userInfo = await axios.post("/v3/mainhome/cookieInfo", { cookieJwt });
+  const userInfo = await axios.post("/api/mainhome/cookieInfo", { cookieJwt });
   console.log(userInfo.data.userImg);
   bookReviewElem.innerHTML = `
     <div class="book_review_side">
@@ -38,9 +38,9 @@ async function loadReviews() {
 
   // 일단은 유저 아이디에 맞는 리뷰들만 찾아오도록 해야겠다.
   // 해당 책의 리뷰를 가져옴
-  // const userId = (await axios.post("/v3/mainhome/cookieInfo", {cookieJwt})).data.id;
-  // const reviews = (await axios.post("/v3/bookdetail/getReviews",{userId : userId})).data;
-  const reviews = (await axios.post("/v3/bookdetail/getReviews", { bookTitle: temp_split[1] })).data;
+  // const userId = (await axios.post("/api/mainhome/cookieInfo", {cookieJwt})).data.id;
+  // const reviews = (await axios.post("/api/bookdetail/getReviews",{userId : userId})).data;
+  const reviews = (await axios.post("/api/bookdetail/getReviews", { bookTitle: temp_split[1] })).data;
   // console.log(reviews[0].userId); // 유저 아이디~~에 해당하는 유저 이미지 가져오기
 
   // 리뷰 개수
@@ -71,7 +71,7 @@ async function loadReviews() {
   // for문 돌려서 화면에 띄움
   console.log(reviews);
   reviews.forEach( async(item, idx) => {
-    const userImg = await axios.post("/v3/bookdetail/getUserImg", { id : reviews[idx].userId });
+    const userImg = await axios.post("/api/bookdetail/getUserImg", { id : reviews[idx].userId });
 
 
     const temp_review_one = document.createElement("div");
@@ -92,7 +92,7 @@ async function loadReviews() {
     temp_threedot.onclick = async () => {
       const realDelete = confirm("댓글을 삭제하시겠습니까?");
       if (realDelete) {
-        const data = await axios.post("/v3/bookdetail/delete", {
+        const data = await axios.post("/api/bookdetail/delete", {
           // 누가 쓴건지 어떠한 내용인지 어디 책인지 정보 보내기
           // id : idx+1,
           userId: item.userId,
@@ -167,7 +167,7 @@ async function loadReviews() {
       return;
     }
 
-    const data = await axios.post("/v3/bookdetail/member_review", {
+    const data = await axios.post("/api/bookdetail/member_review", {
       review_content: review.value,
       bookTitle: temp_split[1]
     });
@@ -206,7 +206,7 @@ function reviewDelete(userId, content, title) {
 
 
 async function book_info() {
-  const data = await axios.post("/v3/bookdetail/load_book_info", {
+  const data = await axios.post("/api/bookdetail/load_book_info", {
     title: temp_split[1],
   });
   console.log(data.data);
@@ -256,7 +256,7 @@ mybook.onclick = async () => {
   // 유저 이름은 서버쪽에서 req.cookie 해서 받아오기 때문에 여기서 안보낸다.
   console.log(temp_split[1]);
 
-  const priceInfo = await axios.post("/v3/bookdetail/priceInfo", { book: temp_split[1] });
+  const priceInfo = await axios.post("/api/bookdetail/priceInfo", { book: temp_split[1] });
   const userMoney = priceInfo.data.userMoney;
   const bookPrice = priceInfo.data.bookPrice;
 
@@ -269,7 +269,7 @@ mybook.onclick = async () => {
     if (buyCheck) {
 
       // 만약 이미 내 서재에 있으면 res send를 이미 있습니다로 보내기
-      const data = await axios.post("/v3/bookdetail/addBook", { book: temp_split[1], money: userMoney, price: bookPrice });
+      const data = await axios.post("/api/bookdetail/addBook", { book: temp_split[1], money: userMoney, price: bookPrice });
 
       if (data.data.status == 200) {
         alert("내 서재에 담겼습니다.");
@@ -294,7 +294,7 @@ mybook.onclick = async () => {
 // const mybook = document.getElementById("mybook");
 
 async function cookieVerify() {
-  const data = await axios.post("/v3/mainhome/cookieInfo", { cookieJwt });
+  const data = await axios.post("/api/mainhome/cookieInfo", { cookieJwt });
 
   if (data.data.nickname) {
     // mybook.innerHTML = ``;
@@ -311,7 +311,7 @@ document.getElementById("logoBtn").onclick = () => {
   location.href = "/";
 }
 document.getElementById("logoutBtn").onclick = async () => {
-  const data = await axios.post("/v3/mainhome/clearCookie", {
+  const data = await axios.post("/api/mainhome/clearCookie", {
     cookieName: tempCookie[0],
   });
 

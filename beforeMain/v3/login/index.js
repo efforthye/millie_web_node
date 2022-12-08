@@ -60,7 +60,7 @@ loginBtnElem.onclick = async () =>{
     console.log(`userId : ${userId.value}, userPw : ${userPw.value}`);
     loginBtnElem.classList.remove("on");
 
-    const loginData = await axios.post("/v3/login/user", {
+    const loginData = await axios.post("/api/login/user", {
         id : userId.value, pw : userPw.value
     });
     
@@ -87,7 +87,7 @@ authorLoginBtnElem.onclick = async () =>{
     console.log(`authorId : ${authorId.value}, authorPw : ${authorPw.value}`);
     authorLoginBtnElem.classList.remove("on");
 
-    const authorLoginData = await axios.post("/v3/login/author", {
+    const authorLoginData = await axios.post("/api/login/author", {
         id : authorId.value, pw : authorPw.value
     });
     

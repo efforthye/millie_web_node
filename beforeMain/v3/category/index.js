@@ -21,7 +21,7 @@ search_btn.onclick = () => {
   location.href = "../category";
 };
 log_out.onclick = async() => {
-  const data = await axios.post("/v3/mainhome/clearCookie", {
+  const data = await axios.post("/api/mainhome/clearCookie", {
     cookieName: tempCookie[0],
   });
 

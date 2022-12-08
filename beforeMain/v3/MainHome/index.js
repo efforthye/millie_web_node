@@ -348,7 +348,7 @@ console.log(cookieJwt);
 const nickname = document.getElementById("UserNickName");
 
 async function cookieVerify() {
-  const data = await axios.post("/v3/mainhome/cookieInfo", { cookieJwt });
+  const data = await axios.post("/api/mainhome/cookieInfo", { cookieJwt });
 
   console.log(data.data.status);
   console.log(data.data.id);
@@ -380,7 +380,7 @@ document.getElementById("logOut-btn").onclick = async () => {
     return;
   }
 
-  const data = await axios.post("/v3/mainhome/clearCookie", {
+  const data = await axios.post("/api/mainhome/clearCookie", {
     cookieName: tempCookie[0],
   });
 
