@@ -5,10 +5,9 @@
 - 기간 : 2022. 11. 3. ~ 2022. 11. 16. (2주간)
 
 # 개발환경
-- FrontEnd : html5, css3, javascript
-	 +bootstrap, codepen
-- BackEnd : node.js(express server), mysql(database, MySQL Workbench)
-- 형상관리 : git(GitHub Desktop)
+- FrontEnd : html5, css3, javascript (+bootstrap, codepen)
+- BackEnd : Node.js(express), MySQL
+- 형상관리 : git
 
 # 주요 구현 사항
 - node.js express를 통한 서버구축
