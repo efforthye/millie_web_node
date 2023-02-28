@@ -6,15 +6,15 @@ if(cookieJwt){
   cookieVerify();
   setProfileImg();
 }else{
-  location.href = "http://localhost:8080";
+  location.href = "/";
 }
 
 // 이미지 정보를 쿠키에서 가져와 띄움
 async function setProfileImg(){
-  const data = await axios.post("/v3/mainhome/cookieInfo", {cookieJwt});
+  const data = await axios.post("/api/mainhome/cookieInfo", {cookieJwt});
 
   const userImgElem = document.getElementById("userImg");
-  userImgElem.setAttribute("src", `http://localhost:8080/uploads/${data.data.userImg}`);
+  userImgElem.setAttribute("src", `/uploads/${data.data.userImg}`);
 
   // src를 data.data.userImg로 가져와서 띄우기만 하면 됨
 }
@@ -28,7 +28,7 @@ const userName = document.getElementById("userName");
 const contentHeader = document.getElementById("contentHeader");
 
 async function cookieVerify(){
-  const data = await axios.post("/v3/mainhome/cookieInfo", {cookieJwt});
+  const data = await axios.post("/api/mainhome/cookieInfo", {cookieJwt});
 
   if(data.data.nickname){
     userName.innerHTML = `<span class="nameBold">${data.data.nickname}</span>`+"작가의 서재";
@@ -48,7 +48,7 @@ const modalContainer2 = document.getElementById("modal-container2");
 
 // 작가 책 작성, 유저 더보기 클릭
 contentHeader.onclick = async() => {
-  const data = await axios.post("/v3/mainhome/cookieInfo", {cookieJwt});
+  const data = await axios.post("/api/mainhome/cookieInfo", {cookieJwt});
   if(data.data.nickname){
     location.href = "../bookAdd";
   }else{
@@ -69,10 +69,10 @@ modalContainer.onclick = () =>{
 // 모달2(마이 라이브러리 위쪽 아이콘) 클릭
 document.getElementById("otherInfoBar").onclick = async() =>{
 
-  const userInfo = await axios.post("/v3/mainhome/cookieInfo", {cookieJwt});
+  const userInfo = await axios.post("/api/mainhome/cookieInfo", {cookieJwt});
   console.log(userInfo.data.id); // efforthye
 
-  const moneyInfo = await axios.post("/v3/mylibrary/getUserMoney", {id : userInfo.data.id});
+  const moneyInfo = await axios.post("/api/mylibrary/getUserMoney", {id : userInfo.data.id});
   console.log(moneyInfo);
 
   nowMoney.innerHTML = `현재 소지 금액은 ${moneyInfo.data.money.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원 입니다.`;
@@ -100,10 +100,10 @@ const modalElem = document.getElementById("modal");
 
 // 유저의 책 정보를 불러옴
 async function getBookList(){
-  const userId = (await axios.post("/v3/mainhome/cookieInfo", {cookieJwt})).data.id;
-  const nickname = (await axios.post("/v3/mainhome/cookieInfo", {cookieJwt})).data.nickname;
+  const userId = (await axios.post("/api/mainhome/cookieInfo", {cookieJwt})).data.id;
+  const nickname = (await axios.post("/api/mainhome/cookieInfo", {cookieJwt})).data.nickname;
 
-  const data = await axios.post("/v3/mylibrary/getBooks",{userId : userId});
+  const data = await axios.post("/api/mylibrary/getBooks",{userId : userId});
 
   // 책들 정보가 들어있는 배열
   const books = data.data.UserInfo;
@@ -126,7 +126,7 @@ async function getBookList(){
     bookInfoDiv.classList.add("book_info");
 
     const imgElem = document.createElement("img");
-    imgElem.setAttribute("src", `http://localhost:8080/uploads/${books[i].book_img}`);
+    imgElem.setAttribute("src", `/uploads/${books[i].book_img}`);
     imgElem.setAttribute("alt", "책 이미지");
 
     const bookTitleDiv = document.createElement("div");
@@ -142,7 +142,7 @@ async function getBookList(){
     // authorInfoDiv.innerHTML = `${books[i].작가명}`; // 작가명 없음
 
     // 책의 작가 정보
-    const data = await axios.post("/v3/bookdetail/load_book_info", {
+    const data = await axios.post("/api/bookdetail/load_book_info", {
       title: books[i].title,
     });
     let nickname2 = "";
@@ -170,7 +170,7 @@ async function getBookList(){
     }
 
     bookDeleteImg.onclick = async () =>{
-      const data = await axios.post("/v3/mylibrary/deleteBook", {title : books[i].title, nickname : nickname});
+      const data = await axios.post("/api/mylibrary/deleteBook", {title : books[i].title, nickname : nickname});
       // console.log(data.data);
       
       if(data.data.status == 200 || data.data.status == 202){
@@ -203,7 +203,7 @@ document.getElementById("my_book_btn").onclick = () =>{
   location.href = "../myLibrary";
 }
 document.getElementById("log_out").onclick = async() =>{
-  const data = await axios.post("/v3/mainhome/clearCookie", {
+  const data = await axios.post("/api/mainhome/clearCookie", {
     cookieName: tempCookie[0],
   });
   if (data.data.status == 200) {

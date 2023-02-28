@@ -626,7 +626,7 @@ joinBtnElem.onclick = async () => {
         
 
         // v3/join/signup
-        const data = await axios.post("/v3/join/signup", formData);
+        const data = await axios.post("/api/join/signup", formData);
         console.log(data.data.status);
 
         // status가 200일때 띄운다.
@@ -677,7 +677,7 @@ authorJoinBtnElem.onclick = async () => {
 
         // 여기에 회원가입 post 추가하면 됨
         // v3/join/authorSignup 이 된다.
-        const data = await axios.post("/v3/join/authorSignup", {
+        const data = await axios.post("/api/join/authorSignup", {
             // 이렇게 값을 보내면 상대편에서는 req.body.name로 값을 받을 수 있다.
             name: authorName, userId: authorUserId, email: authorEmail,
             userPw: authorUserPw, birthday: authorBirthday, nickname: nickname,

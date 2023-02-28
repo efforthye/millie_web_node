@@ -60,14 +60,14 @@ loginBtnElem.onclick = async () =>{
     console.log(`userId : ${userId.value}, userPw : ${userPw.value}`);
     loginBtnElem.classList.remove("on");
 
-    const loginData = await axios.post("/v3/login/user", {
+    const loginData = await axios.post("/api/login/user", {
         id : userId.value, pw : userPw.value
     });
     
     // console.log(loginData.data.status);
     if(loginData.data.status==200){
         // 로그인후메인으로 보내준다.
-        location.href = "http://localhost:8080/v3/MainHome/";
+        location.href = "/v3/MainHome/";
         alert("일반회원 로그인 완료.");
     }else if(loginData.data.status==401){
         alert("존재하지 않는 아이디입니다.");
@@ -87,13 +87,13 @@ authorLoginBtnElem.onclick = async () =>{
     console.log(`authorId : ${authorId.value}, authorPw : ${authorPw.value}`);
     authorLoginBtnElem.classList.remove("on");
 
-    const authorLoginData = await axios.post("/v3/login/author", {
+    const authorLoginData = await axios.post("/api/login/author", {
         id : authorId.value, pw : authorPw.value
     });
     
     if(authorLoginData.data.status==200){
         // 로그인후메인으로 보내준다.
-        location.href = "http://localhost:8080/v3/MainHome/";
+        location.href = "/v3/MainHome/";
         alert("작가회원 로그인 완료.");
     }else if(authorLoginData.data.status==401){
         alert("존재하지 않는 아이디입니다.");

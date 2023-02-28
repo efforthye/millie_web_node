@@ -25,7 +25,7 @@
 - socket.io를 활용한 대화기능 구현
 
 # 프로젝트 실행 방법
-1. 폴더경로 접근 후 npm install -> node_modules 생성됨
+1. 폴더경로(millie-web-project) 접근 후 npm install -> node_modules 생성됨
 2. config/config.json에서 database 이름과 비밀번호 확인 및 변경
 - database : millie_web_project
 - password : 자신의 mysql workbench 비밀번호로 설정한다.
@@ -33,3 +33,4 @@
 4. database의 table 생성을 위해 npm start를 통해 서버를 실행시킨다.
 5. index.js의 sequelize force 부분을 true로 한 번 바꿔 저장한 뒤, 다시 false로 바꿔 저장한다.
 6. npm start를 통해 프로젝트를 재실행한다.
+- localhost:8080

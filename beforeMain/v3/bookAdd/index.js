@@ -42,7 +42,7 @@ saveBtn.onclick = () =>{
     // formData.append("price", price.value);
     formData.append("price", regExp(price.value));
 
-    const data = await axios.post("/v3/boodAdd/upload", formData);
+    const data = await axios.post("/api/boodAdd/upload", formData);
     if (data.data.status == 200) {
       alert("책을 등록하였습니다.");
     } else {

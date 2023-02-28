@@ -16,7 +16,7 @@ module.exports = class ReviewInfo extends Sequelize.Model {
         charset: "utf8mb4",
         collate: "utf8mb4_general_ci",
         timestamps: true,
-        paranoid : true
+        paranoid: true
       }
     );
   }
@@ -28,13 +28,11 @@ module.exports = class ReviewInfo extends Sequelize.Model {
     });
 
 
-
     // 댓글들을 유저에 연결시켜줌
     db.ReviewInfo.belongsTo(db.User_Info, {
       foreignKey: "userId", // 생성 컬럼 이름
       targetKey: "userId",
     });
-
 
   }
 };

@@ -6,7 +6,7 @@ if (cookieJwt) {
   // cookieVerify();
 } else {
   // 쿠키 없으면 로그인 전 메인으로 보냄
-  location.href = "http://localhost:8080";
+  location.href = "/";
 }
 
 const logo = document.getElementById("logo");
@@ -21,13 +21,13 @@ search_btn.onclick = () => {
   location.href = "../category";
 };
 log_out.onclick = async() => {
-  const data = await axios.post("/v3/mainhome/clearCookie", {
+  const data = await axios.post("/api/mainhome/clearCookie", {
     cookieName: tempCookie[0],
   });
 
   if (data.data.status == 200) {
     alert("로그아웃 성공");
-    location.href = "http://localhost:8080";
+    location.href = "/";
   } else {
     alert("로그아웃 실패");
   }

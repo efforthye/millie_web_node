@@ -5,7 +5,7 @@ if (cookieJwt) {
   // cookieVerify();
 } else {
   // 쿠키 없으면 로그인 전 메인으로 보냄
-  location.href = "http://localhost:8080";
+  location.href = "/";
 }
 
 
@@ -49,7 +49,7 @@ makeList("확인용", category[7]);
 newbooks();
 
 async function newbooks() {
-  const data = await axios.post("/v3/category/booklist/bookAdd", {
+  const data = await axios.post("/api/category/booklist/bookAdd", {
     category: category[temp[1]],
   });
   for (let i = 0; i < data.data.length; i++) {
@@ -63,7 +63,7 @@ async function newbooks() {
     temp_item.append(temp_book_info);
     const img = document.createElement("img");
     console.log(data.data[i].book_img);
-    img.src = "http://localhost:8080/uploads/" + data.data[i].book_img;
+    img.src = "/uploads/" + data.data[i].book_img;
     temp_img_box.append(img);
     const temp_book_title = document.createElement("div");
     temp_book_title.classList.add("book_title");
@@ -95,7 +95,7 @@ async function makeList(bannerName, category) {
   temp_h3.id = bannerName + "Title";
   temp_h3.innerText = "추천 도서";
   temp_container.classList.add("item_container");
-  const data = await axios.post("/v3/category/booklist/test", {
+  const data = await axios.post("/api/category/booklist/test", {
     category: category,
   });
   for (let i = 0; i < data.data.length; i++) {
@@ -145,13 +145,13 @@ my_book_btn.onclick = () => {
   location.href = "../../myLibrary";
 };
 document.getElementById("log_out").onclick = async () => {
-  const data = await axios.post("/v3/mainhome/clearCookie", {
+  const data = await axios.post("/api/mainhome/clearCookie", {
     cookieName: tempCookie[0],
   });
 
   if (data.data.status == 200) {
     alert("로그아웃 성공");
-    location.href = "http://localhost:8080";
+    location.href = "/";
   } else {
     alert("로그아웃 실패");
   }
