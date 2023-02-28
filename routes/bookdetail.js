@@ -6,13 +6,13 @@ const jwt = require("jsonwebtoken");
 
 
 // 유저 아이디로 유저 이미지 구해오기
-router.post("/getUserImg", async(req,res)=>{
+router.post("/getUserImg", async (req, res) => {
   const userInfo = await User_Info.findOne({
-    where : {userId : req.body.id}
+    where: { userId: req.body.id }
   });
   const userImg = userInfo.dataValues.userImg;
 
-  res.send({userImg : userImg});
+  res.send({ userImg: userImg });
 });
 
 

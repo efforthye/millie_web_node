@@ -19,7 +19,7 @@ dotenv.config();
 
 const app = express();
 
-app.set("port", process.env.PORT || 8080);
+app.set("port", 8081 || process.env.PORT);
 
 app.use("/uploads", express.static("uploads"));
 
