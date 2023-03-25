@@ -17,7 +17,7 @@
 - node.js에서 mysql database 접근 front출력
   - 입력, 수정, 삭제, 출력, 정렬 구현
 - decodeURI를 활용한 한글 사이트주소(url) 가져오기
-- database 연결관계(associate) 설정
+- database 연결관계(associate) 설정   
   (user, book, comment)
 - git을 이용한 형상관리(merge,rebase,commit,push,pull등)
 
