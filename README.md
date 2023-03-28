@@ -7,7 +7,7 @@
 # 개발환경
 - FrontEnd : html5, css3, javascript (+bootstrap, codepen)
 - BackEnd : Node.js(express), MySQL
-- 형상관리 : git
+- 형상관리 : git  
 
 # 주요 구현 사항
 - node.js express를 통한 서버구축
