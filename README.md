@@ -1,5 +1,7 @@
 # Millie-Web-Project
 ### 경일게임아카데미 1차 조별 프로젝트 ###
+![sdfsdfsdfdsfdf](https://github.com/efforthye/Millie-Web/assets/111038259/fcdce2e6-23ee-44d4-bc71-382d640dc502)
+
 - array팀(김성진, 박혜림, 신상목, 최원겸)
 - 밀리의 서재 클론코딩
 - 기간 : 2022. 11. 3. ~ 2022. 11. 16. (2주간)
