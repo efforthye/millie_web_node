@@ -30,4 +30,3 @@
 4. database의 table 생성을 위해 npm start를 통해 서버를 실행시킨다.
 5. index.js의 sequelize force 부분을 true로 한 번 바꿔 저장한 뒤, 다시 false로 바꿔 저장한다.
 6. npm start를 통해 프로젝트를 재실행한다.
-- localhost:8080
