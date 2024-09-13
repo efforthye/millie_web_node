@@ -21,9 +21,6 @@
   (user, book, comment)
 - git을 이용한 형상관리(merge,rebase,commit,push,pull등)
 
-# 있으면 좋았을 것
-- socket.io를 활용한 대화기능 구현
-
 # 프로젝트 실행 방법
 1. 폴더경로(millie-web-project) 접근 후 npm install -> node_modules 생성됨
 2. config/config.json에서 database 이름과 비밀번호 확인 및 변경
