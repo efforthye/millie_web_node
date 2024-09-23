@@ -1,0 +1,10 @@
+{
+  "database": {
+    "host": "localhost",
+    "port": 3306,
+    "username": "your_username",
+    "password": "your_password",
+    "database": "millie_web_project",
+    "dialect": "mysql"
+  }
+}

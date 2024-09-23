@@ -23,9 +23,9 @@ app.set("port", 8081 || process.env.PORT);
 
 app.use("/uploads", express.static("uploads"));
 
-// app.use("/", express.static(path.join(__dirname, "beforeMain/v3/login")));
-// app.use("/", express.static(path.join(__dirname, "beforeMain/v3/login")));
-// app.use("/", express.static(path.join(__dirname, "beforeMain")));
+app.use("/", express.static(path.join(__dirname, "beforeMain/v3/login")));
+app.use("/", express.static(path.join(__dirname, "beforeMain/v3/login")));
+app.use("/", express.static(path.join(__dirname, "beforeMain")));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -1,8 +1,9 @@
 "use strict";
 
 const Sequelize = require("sequelize");
+const path = require("path");
 const env = process.env.NODE_ENV || "development";
-const config = require(__dirname + "/../config/config.json")[env];
+const config = require(path.join(__dirname + "/../config/config.json")); // [env]
 
 const User_Info = require("./join.js"); // module.exports 를 해줘야함
 const BookInfo = require("./bookInfo.js");
@@ -14,10 +15,14 @@ const db = { User_Info, BookInfo, ReviewInfo };
 // const db = {User_Info, Login};
 
 let sequelize = new Sequelize(
-  config.database,
-  config.username,
-  config.password,
-  config
+  config.database.database,
+  config.database.username,
+  config.database.password,
+  {
+    host: config.database.host,
+    dialect: config.database.dialect,
+    port: config.database.port
+  }
 );
 
 User_Info.init(sequelize);
