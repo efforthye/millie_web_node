@@ -59,7 +59,7 @@ app.use(cors({origin : "https://efforthye.com"}));
 // app.use(cors());
 
 sequelize
-  .sync({ force: true })
+  .sync({ force: false })
   .then(() => {
     console.log("db connected");
   })
